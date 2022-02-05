@@ -1,15 +1,9 @@
 /* ==========================================================================  **
 ## HW3 Instructions
 
-See this Google doc for clarifications to this homework:
-
-https://docs.google.com/document/d/1HiOEaGOq7pA5OMz4rCmp_ztxRo8GKZex3SigZVV56PY/edit?usp=sharing
-
 ** ==========================================================================  **
 
-1. Push your solution, contained entirely in hw3.ts, back to the github classroom
-   repository. Please make sure you solution compiles!!! 
-
+1.
    To run the typescript compiler (`tsc`), make sure you have it installed
    ```
    tsc -v
@@ -19,10 +13,7 @@ https://docs.google.com/document/d/1HiOEaGOq7pA5OMz4rCmp_ztxRo8GKZex3SigZVV56PY/
    ```
    tsc --strict --target es2019 --module commonjs hw3.ts
    ```
-   to produce a file `hw3.js`. If we cannot compile your solution with `tsc`, we
-   will not grade your submission. Even if you are looking for partial credit,
-   your entire hw3.ts must compile, and we must be able to run the compiled js file
-   in `node`.
+   to produce a file `hw3.js`. 
 2. Do not change any of the function interfaces.
 3. Fill in everything that has TODO.
 
@@ -34,11 +25,11 @@ https://docs.google.com/document/d/1HiOEaGOq7pA5OMz4rCmp_ztxRo8GKZex3SigZVV56PY/
 ** ============================================================================ */
 
 export const HONOR_PLEDGE = "I pledge on my honor that this assignment is my own work.";
-export const SIGNATURE = "Dev Soni"; // TODO: FILL ME IN
+export const SIGNATURE = "<your-full-name-here>"; // TODO: FILL ME IN
 
 // If you had any collaborators on this assignment, please list their github handles here.
 export const COLLABORATORS = [
-    "developer-soni", // TODO: FILL ME IN
+    "", // TODO: FILL ME IN
 ];
 
 // If you used any resources, please list them here
@@ -94,7 +85,7 @@ export class StrangeNumberClass {
 
     isEven(n: number): boolean {
         if (n < 0) {
-            this.count = this.count * 2 + 1;
+            this.count = this.count*2 + 1;
             return !this.isOdd(-n);
         } else if (n === 0) {
             return true;
@@ -111,7 +102,7 @@ export class StrangeNumberClass {
         } else if (n === 0) {
             return false;
         } else {
-            this.count = this.count * 2 + 1;
+            this.count = this.count*2 + 1;
             return this.isEven(n - 1);
         }
     }
@@ -126,7 +117,7 @@ type StrangeNumber = {
 export function newStrangeNumber(): StrangeNumber {
     function isEven(this: StrangeNumber, n: number): boolean {
         if (n < 0) {
-            obj.count = obj.count * 2 + 1;
+            obj.count = obj.count*2 + 1;
             return !this.isOdd(-n);
         } else if (n === 0) {
             return true;
@@ -143,7 +134,7 @@ export function newStrangeNumber(): StrangeNumber {
         } else if (n === 0) {
             return false;
         } else {
-            obj.count = obj.count * 2 + 1;
+            obj.count = obj.count*2 + 1;
             return this.isEven(n - 1);
         }
     }
@@ -151,9 +142,6 @@ export function newStrangeNumber(): StrangeNumber {
     const obj = { count: 1, isEven, isOdd };
 
     return obj;
-
-    // TODO: Implement me
-    // throw Error("TODO");
 }
 
 // * Test:
@@ -193,7 +181,7 @@ Your functional code should behave the same way
 
 ** ----------------------------------------------------- */
 
-export class StrangeNumber2Class extends StrangeNumberClass {
+export class StrangeNumber2Class extends StrangeNumberClass { 
     constructor() {
         super();
     }
@@ -220,9 +208,6 @@ export function newStrangeNumber2(): StrangeNumber {
     }
 
     return obj;
-
-    // TODO: implement me
-    // throw Error("TODO");
 }
 
 // * Test:
@@ -325,7 +310,7 @@ export class Tree<T> {
                             )
                         )
     ** ----------------------------------------------------- */
-    constructor(contents: T, left: undefined | Tree<T>, right: undefined | Tree<T>) {
+    constructor(contents: T, left: undefined|Tree<T>, right: undefined|Tree<T>) {
         this.contents = contents;
         this.left = left;
         this.right = right;
@@ -361,11 +346,10 @@ export class Tree<T> {
             this.left?.map(f),
             this.right?.map(f)
         )
-        // TODO: implement me
-        // throw Error("TODO");
     }
-
-    /* Needed for task 2c: Tree3<T>.toTree2()
+    
+    /**
+     * Needed for task 2c: Tree3<T>.toTree2()
      * @returns Copy of the Tree with all Tree3's eliminated
      */
     public toTree2(): Tree<T> {
@@ -376,7 +360,6 @@ export class Tree<T> {
         );
     }
 }
-
 
 // * Test:
 // const tr2 = new Tree(2, undefined, undefined)
@@ -429,10 +412,10 @@ export class Tree3<T> extends Tree<T> {
 
     Example 3:
 
-        const tr3 = new Tree2(
+        const tr3 = new Tree(
             2,
             tr2,
-            new Tree2(3, undefined, tr2)
+            new Tree(3, undefined, tr2)
         )
 
               2
@@ -444,7 +427,7 @@ export class Tree3<T> extends Tree<T> {
                   / | \  
                  2  1  4
     ** ----------------------------------------------------- */
-    constructor(contents: T, left: undefined | Tree<T>, middle: undefined | Tree<T>, right: undefined | Tree<T>) {
+    constructor(contents: T, left: undefined|Tree<T>, middle: undefined|Tree<T>, right: undefined|Tree<T>) {
         super(contents, left, right);
         this.middle = middle;
     }
@@ -483,8 +466,6 @@ export class Tree3<T> extends Tree<T> {
             this.middle?.map(f),
             this.right?.map(f)
         )
-        // TODO: Implement me
-        // throw Error("TODO");
     }
 
     /* ----------------------------------------------------- **
@@ -493,7 +474,7 @@ export class Tree3<T> extends Tree<T> {
     
     Let `curr` be a node with left child `left`, middle child `mid`, and
     right child `right`. If the middle child `mid` is not `undefined`,
-    then make the sub-tree rooted at the middle child `mid` the left-most
+    then make the sub-tree rooted at the left child `left` the left-most
     sub-tree of the sub-tree `left.toTree2()`. That is, make `mid.toTree2()` 
     the left-most sub-tree of the sub-tree `left.toTree2()`.
 
@@ -538,8 +519,6 @@ export class Tree3<T> extends Tree<T> {
                 this.right?.toTree2()
             );
         }
-        // TODO: Implement me
-        // throw Error("TODO");
     }
 }
 
@@ -560,6 +539,7 @@ export class Tree3<T> extends Tree<T> {
 // console.log(tr1.toTree2());
 // console.log(tr2.toTree2());
 // console.log(JSON.stringify(tr3.toTree2(), null, 4));
+
 
 
 /* ==========================================================================  **
@@ -661,17 +641,15 @@ export interface JSONValue {
 export class StringJSONValue implements JSONValue {
     public readonly str: string;
 
-    constructor(str: string) {
+    constructor (str: string) {
         this.str = str;
     }
 
     public allPathsSatisfyingPredicate(predicate: (authority: string) => boolean): string[] {
-        // TODO: Implement me
         throw Error("Should never be called");
     }
 
     public fillInMissingPath(): JSONValue {
-        // TODO: Implement me
         throw Error("Should never be called");
     }
 }
@@ -684,17 +662,15 @@ export class StringJSONValue implements JSONValue {
 export class ArrJSONValue implements JSONValue {
     public readonly arr: JSONValue[];
 
-    constructor(arr: JSONValue[]) {
+    constructor (arr: JSONValue[]) {
         this.arr = arr;
     }
 
     public allPathsSatisfyingPredicate(predicate: (authority: string) => boolean): string[] {
-        // TODO: Implement me
         return this.arr.map(obj => obj.allPathsSatisfyingPredicate(predicate)).flat();
     }
-
+    
     public fillInMissingPath(): JSONValue {
-        // TODO: Implement me
         return new ArrJSONValue(this.arr.map(obj => obj.fillInMissingPath()));
     }
 }
@@ -707,12 +683,11 @@ export class ArrJSONValue implements JSONValue {
 export class ObjJSONValue implements JSONValue {
     public readonly obj: { [key: string]: JSONValue }
 
-    constructor(obj: { [key: string]: JSONValue }) {
+    constructor (obj: { [key: string]: JSONValue }) {
         this.obj = obj;
     }
 
     public allPathsSatisfyingPredicate(predicate: (authority: string) => boolean): string[] {
-        // TODO: Implement me
         const arr = [];
         if (this.obj.authority instanceof StringJSONValue && predicate(this.obj.authority.str)) {
             if (this.obj.path instanceof StringJSONValue) arr.push(this.obj.path.str);
@@ -725,9 +700,8 @@ export class ObjJSONValue implements JSONValue {
     }
 
     public fillInMissingPath(): JSONValue {
-        // TODO: Implement me
         const newObj: { [key: string]: JSONValue } = { ...this.obj };
-
+        
         newObj.path ??= new StringJSONValue("/");
 
         if (newObj.links instanceof ArrJSONValue) {
@@ -744,7 +718,7 @@ export const jsonLinkExample: JSONValue = new ArrJSONValue([
         "path": new StringJSONValue("1"),
         "links": new ArrJSONValue([
             new ObjJSONValue({
-                "authority": new StringJSONValue("www.two.com"),
+                "authority": new StringJSONValue("www.two.com"), 
                 "links": new ArrJSONValue([]),
             }),
             new ObjJSONValue({
@@ -756,9 +730,9 @@ export const jsonLinkExample: JSONValue = new ArrJSONValue([
     }),
     new ObjJSONValue({
         "authority": new StringJSONValue("www.four.com"),
-        "links": new ArrJSONValue([
+        "links": new ArrJSONValue([ 
             new ObjJSONValue({
-                "authority": new StringJSONValue("seven.com"),
+                "authority": new StringJSONValue("seven.com"), 
                 "links": new ArrJSONValue([
                     new ObjJSONValue({
                         "authority": new StringJSONValue("app.one.com"),
@@ -773,7 +747,7 @@ export const jsonLinkExample: JSONValue = new ArrJSONValue([
                 ]),
             }),
             new ObjJSONValue({
-                "authority": new StringJSONValue("app.three.com"),
+                "authority": new StringJSONValue("app.three.com"), 
                 "path": new StringJSONValue("locations/42"),
                 "links": new ArrJSONValue([]),
             })
@@ -804,7 +778,6 @@ export class WebEntryJSONValue extends ObjJSONValue {
     }
 
     public allPathsSatisfyingPredicate(predicate: (authority: string) => boolean): string[] {
-        // TODO: implement me
         const arr = [];
         if (this.obj.authority instanceof StringJSONValue && predicate(this.obj.authority.str)) {
             arr.push("/");
@@ -816,7 +789,6 @@ export class WebEntryJSONValue extends ObjJSONValue {
     }
 
     public fillInMissingPath(): JSONValue {
-        // TODO: implement me
         return new WebEntryPathJSONValue(
             (this.obj.authority as StringJSONValue).str,
             "/",
@@ -835,7 +807,6 @@ export class WebEntryPathJSONValue extends ObjJSONValue {
     }
 
     public allPathsSatisfyingPredicate(predicate: (authority: string) => boolean): string[] {
-        // TODO: implement me
         const arr = [];
         if (this.obj.authority instanceof StringJSONValue && predicate(this.obj.authority.str)) {
             arr.push((this.obj.path as StringJSONValue).str);
@@ -847,7 +818,6 @@ export class WebEntryPathJSONValue extends ObjJSONValue {
     }
 
     public fillInMissingPath(): JSONValue {
-        // TODO: implement me
         return new WebEntryPathJSONValue(
             (this.obj.authority as StringJSONValue).str,
             (this.obj.path as StringJSONValue).str,
@@ -862,7 +832,7 @@ export const jsonLinkExample2: JSONValue = new ArrJSONValue([
         "1",
         new ArrJSONValue([
             new WebEntryJSONValue(
-                "www.two.com",
+                "www.two.com", 
                 new ArrJSONValue([]),
             ),
             new WebEntryPathJSONValue(
@@ -874,9 +844,9 @@ export const jsonLinkExample2: JSONValue = new ArrJSONValue([
     ),
     new WebEntryJSONValue(
         "www.four.com",
-        new ArrJSONValue([
+        new ArrJSONValue([ 
             new WebEntryJSONValue(
-                "seven.com",
+                "seven.com", 
                 new ArrJSONValue([
                     new WebEntryPathJSONValue(
                         "app.one.com",
@@ -891,14 +861,13 @@ export const jsonLinkExample2: JSONValue = new ArrJSONValue([
                 ])
             ),
             new ObjJSONValue({ // NOTE: We can still put other ObjSONValue's in here
-                "authority": new StringJSONValue("app.three.com"),
+                "authority": new StringJSONValue("app.three.com"), 
                 "path": new StringJSONValue("locations/42"),
                 "links": new ArrJSONValue([]),
             })
         ])
     )
 ])
-
 
 // * Test:
 // console.log(jsonLinkExample2.allPathsSatisfyingPredicate(a => a.endsWith(".com")));
